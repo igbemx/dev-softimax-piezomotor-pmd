@@ -1,0 +1,2 @@
+Motor Default step size in the current configuration is 50 nm.
+
