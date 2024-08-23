@@ -1,2 +1,51 @@
 Motor Default step size in the current configuration is 50 nm.
 
+Possible error and status codes:
+
+{d1}{d2}{d3}{d4}
+8: comError reset servoMode parked
+4: encError xLimit targetLimit overheat
+2: voltageError script targetMode reverse
+1: cmdError index targetReached running
+
+======
+The measured steps per count (SPC) for the Kohzu vertical stage should be:
+XY11=5134
+
+For Attocube + PandaBox
+XY11=10
+
+
+======
+1 wfm-step = 8192 μsteps
+Running 8192 microsteps produces 1 full waveform cycle (wfm-step), which gives around 5 μm (3.5 µm for Y stage)
+movement with a Piezo LEGS linear motor. Microstep resolution is better than 1 nanometer. The
+waveform update rate is 65 kHz and maximum cycle frequency (wfm-step rate) is 2500 Hz. Maximum
+cycle frequency will be set lower for motors with capacitance >1.2 μF.
+
+======
+XU3 Gives infromation about the calculated maximum drive frequence (Hz, wfm/s)
+
+Index mode check:
+=================
+XN:2,65882, stopI
+
+External limit mode should be:
+==============================
+XY2=2
+
+Internal limit mode is set in enc steps as:
+==============================
+XY3=-12025000 
+XY4=12025000 
+
+Encoder counting direction
+==============================
+XY6=0 for Kohzu encoder (Default)
+XY6=1 for Attocube A&B out via PandaBox
+
+This and also XY11 can be set automatically by executing XY25=1
+
+Encoder jitter
+==============================
+XY5 = 2 (in encoder steps)
